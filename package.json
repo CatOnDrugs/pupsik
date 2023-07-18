@@ -1,0 +1,21 @@
+{
+    "name": "pupsik",
+    "version": "0.0.2",
+    "description": "Pupsik implements a userfriendly interface for mathematical and physical operations",
+    "keywords": [
+        "math",
+        "physic",
+        "postfix",
+        "pipeline-operator"
+    ],
+    "homepage": "",
+    "bugs": {
+        "url": "https://github.com/CatOnDrugs/pupsik",
+        "email": "pupsikBugs@gmail.com"
+    },
+    "license": "GPL v3",
+    "author": "CatOnDrugs",
+    "main": "./core/repl.js",
+    "scripts": {},
+    "dependencies": {}
+}
