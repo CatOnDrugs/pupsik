@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 
 const repl = require('repl');
 const vm = require('vm');

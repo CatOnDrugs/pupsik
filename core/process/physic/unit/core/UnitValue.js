@@ -15,6 +15,19 @@ UnitValue.typeConversionTo = function( type ) { return new UnitValue( this.value
 UnitValue.toString = function() { return this.value + ComplexUnit.toString.call(this) };
 
 
+const DefaultBoolOp = function( op, a, b ) {
+    if( typeof b === "number" || b == undefined ) {
+        return op(a.value, b);
+    }
+    if( a.constructor == b.constructor ) {
+        const convertType = a.typeConversion( b );
+        const koef1 = a.typeConversionKoef( convertType );
+        const koef2 = b.typeConversionKoef( convertType );
+        return op(a.value*koef1, b.value*koef2);
+    }
+    return op(a.value, b.value);
+};
+
 const DefaultOp = function( op, a, b ) {
     if( typeof b === "number" || b == undefined ) {
         return op(a.value, b);
@@ -34,10 +47,10 @@ UnitValue.bool = function() {
 };
 
 UnitValue.lt = function(b) {
-    return DefaultOp( (a,b) => a<b, this, b );
+    return DefaultBoolOp( (a,b) => a<b, this, b );
 };
 UnitValue.gt = function(b) {
-    return DefaultOp( (a,b) => a>b, this, b );
+    return DefaultBoolOp( (a,b) => a>b, this, b );
 };
 
 const isSpecific = function(a, b) {
